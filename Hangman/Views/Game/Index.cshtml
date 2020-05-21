@@ -1,0 +1,42 @@
+@using Hangman.Models;
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Game</h1>
+  </div>
+
+  <div class="row">
+    <div id="guesses" class="col-md-6">
+      @Game.Word
+<br><br>
+      @foreach(char letter in @Game.HiddenWord)
+      {
+        @(letter.ToString() + " ")
+      }
+
+      <br><br>
+      <h3>Incorrect</h3>
+      @foreach(char letter in @Game.Incorrect)
+      {
+        @(letter.ToString() + ", ")
+      }
+    </div>
+        <div id="game" class="col-md-6">
+        Test
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div id="guessform" class="col-md-12">
+          <form action="/game" method="post">
+    <label for="guess">Guess</label>
+    <input id="guess" name="guess" type="text" class="form-control" style="width: 10%;"><br>
+    <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+    </div>
+  </div>
+
+</div>
